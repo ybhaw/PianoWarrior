@@ -80,7 +80,6 @@ mido_runner: MidoRunner = MidoRunner()
 async def handle_client(websocket):
     # Add client to the set
     print(f"Client connected: {websocket.remote_address}")
-    global mido_runner
     connected_clients.add(websocket)
     await mido_runner.initialize_in_port(websocket)
 
