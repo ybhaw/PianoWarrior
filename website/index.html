@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Piano Learner</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.1/simpleslider.min.js"
+            integrity="sha512-42ihIJMe9wofu/ceGVAmlEYPtHXiMHaqlyNircGpwIIPoS6njsNUkhP6TFnwpcmtC1ACydkX0polDFQesnLukg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div class="body-wrapper">
+    <div class="header">
+        <div class="logo">
+            <h1>Piano Master</h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="side-bar">
+            <div class="slider-selector">
+                <div class="fade-slider fade-in">
+                    <label class="fade-label" for="fade-in">Fade In</label>
+                    <input id="fade-in" type="range" min="0" max="5" step="0.01" value="0.5"
+                           class="fade-input fade-in-slider" onchange="changeFadeIn()">
+                </div>
+                <div class="fade-slider fade-out">
+                    <label class="fade-label" for="fade-out">Fade Out</label>
+                    <input id="fade-out" type="range" min="0" max="5" step="0.01" value="0.1"
+                           class="fade-input fade-out-slider" onchange="changeFadeOut()">
+                </div>
+            </div>
+            <div id="labels">
+            </div>
+            <div class="footer">
+                <div class="average-time">
+                    <h3>Average</h3>
+                    <h2 id="average">0.000s</h2>
+                </div>
+                <button class="start-button" onclick="connect()">Connect</button>
+            </div>
+        </div>
+        <div class="main-content">
+            <div>
+                <div class="playground">
+                    <div class="rule">
+                        <div class="line b2 white hide"></div>
+                        <div class="line a2 black hide"></div>
+                        <div class="line g1 white hide"></div>
+                        <div class="line f1 black"></div>
+                        <div class="line e1 white"></div>
+                        <div class="line d1 black"></div>
+                        <div class="line c1 white"></div>
+                        <div class="line b1 black"></div>
+                        <div class="line a1 white"></div>
+                        <div class="line g0 black"></div>
+                        <div class="line f0 white"></div>
+                        <div class="line e0 black"></div>
+                        <div class="line d0 white hide"></div>
+                        <div class="line c0 black hide"></div>
+                        <div class="line b0 white hide"></div>
+                        <div class="line-dangle black c0"></div>
+                        <div class="line-dangle black d0"></div>
+                        <div class="line-dangle black g1"></div>
+                        <div class="line-dangle black a2"></div>
+                        <img src="note-1.svg" alt="note-1" class="note note-1 c0">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 d0">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 e0">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 f0">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 g0">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 a1">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 b1">
+                        <img src="note-1.svg" alt="note-1" class="note note-1 c1">
+                        <img src="note-2.svg" alt="note-2" class="note note-2 d1">
+                        <img src="note-2.svg" alt="note-2" class="note note-2 e1">
+                        <img src="note-2.svg" alt="note-2" class="note note-2 f1">
+                        <img src="note-2.svg" alt="note-2" class="note note-2 g1">
+                        <img src="note-2.svg" alt="note-2" class="note note-2 a2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="main.js" defer></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,366 @@
+@keyframes appear-in-1 {
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  100% {
+    left: calc(50% - 26px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes appear-in-2 {
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  100% {
+    left: calc(50% + 1px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes fade-out-1 {
+  0% {
+    left: calc(50% - 26px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    left: 150%;
+  }
+  100% {
+    opacity: 0;
+    left: -100%;
+  }
+}
+@keyframes fade-out-2 {
+  0% {
+    left: calc(50% + 1px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    left: 150%;
+  }
+  100% {
+    opacity: 0;
+    left: -100%;
+  }
+}
+@keyframes line-appear-in-1 {
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  70% {
+    left: 30px;
+    transform: rotate(5deg);
+    opacity: 1;
+  }
+  85% {
+    left: calc(50% - 22px);
+    transform: rotate(-5deg);
+    opacity: 1;
+  }
+  100% {
+    left: calc(50% - 32px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes line-appear-in-2 {
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  100% {
+    left: calc(50% - 8px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes line-fade-out-1 {
+  0% {
+    left: calc(50% - 32px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    left: 150%;
+  }
+  100% {
+    opacity: 0;
+    left: -100%;
+  }
+}
+@keyframes line-fade-out-2 {
+  100% {
+    left: calc(50% - 8px);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    left: 150%;
+  }
+  100% {
+    opacity: 0;
+    left: -100%;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --out-duration: 0.1s;
+  --in-duration: 0.5s;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.body-wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: #cccccc;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex: auto;
+  width: 100%;
+}
+.content .side-bar {
+  height: 100%;
+  width: 300px;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+.content .side-bar .side-bar-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.content .side-bar .side-bar-item:hover {
+  background-color: #e5e5e5;
+}
+.content .side-bar .slider-selector .fade-slider {
+  display: flex;
+  flex-direction: row;
+}
+.content .side-bar .slider-selector .fade-slider .fade-label {
+  flex: 1;
+  min-width: 100px;
+}
+.content .side-bar .slider-selector .fade-slider .fade-input {
+  flex: 1;
+}
+.content .side-bar #labels {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: start;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+.content .side-bar #labels .label-group {
+  display: flex;
+  background-color: #ccccdd;
+  padding: 0.5rem;
+  border-radius: 5px;
+  flex-direction: row;
+  position: relative;
+  min-width: 50px;
+}
+.content .side-bar #labels .label-group .label-note {
+  font-weight: bold;
+}
+.content .side-bar #labels .label-group .label-duration {
+  font-size: 0.5rem;
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+}
+.content .side-bar .average-time h3 {
+  margin: 0;
+  padding-bottom: 0;
+  font-weight: 400;
+}
+.content .side-bar .average-time h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.content .side-bar .footer {
+  display: flex;
+  justify-content: space-between;
+}
+.content .side-bar .footer .start-button {
+  padding: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.content .side-bar .footer .start-button:hover {
+  background-color: #e5e5e5;
+}
+.content .main-content {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+}
+.content .playground {
+  flex: auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.content .playground .rule {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.content .playground .rule .black {
+  border: 2px solid black;
+}
+.content .playground .rule .white {
+  border: 2px solid white;
+}
+.content .playground .rule .hide {
+  opacity: 0;
+}
+.content .playground .rule .note {
+  position: absolute;
+  height: 100px;
+  width: 30px;
+  opacity: 0;
+}
+.content .playground .rule .note.note-1 {
+  animation: fade-out-1 var(--out-duration) ease-in-out forwards;
+}
+.content .playground .rule .note.note-1.active {
+  animation: appear-in-1 var(--in-duration) ease-in-out forwards;
+}
+.content .playground .rule .note.note-2 {
+  animation: fade-out-2 var(--out-duration) ease-in-out forwards;
+}
+.content .playground .rule .note.note-2.active {
+  animation: appear-in-2 var(--in-duration) ease-in-out forwards;
+}
+.content .playground .rule .note.c0 {
+  top: 90px;
+}
+.content .playground .rule .note.d0 {
+  top: 79px;
+}
+.content .playground .rule .note.e0 {
+  top: 65px;
+}
+.content .playground .rule .note.f0 {
+  top: 52px;
+}
+.content .playground .rule .note.g0 {
+  top: 40px;
+}
+.content .playground .rule .note.a1 {
+  top: 26px;
+}
+.content .playground .rule .note.b1 {
+  top: 13px;
+}
+.content .playground .rule .note.c1 {
+  top: 0;
+}
+.content .playground .rule .note.d1 {
+  top: 55px;
+}
+.content .playground .rule .note.e1 {
+  top: 45px;
+}
+.content .playground .rule .note.f1 {
+  top: 30px;
+}
+.content .playground .rule .note.g1 {
+  top: 19px;
+}
+.content .playground .rule .note.a2 {
+  top: 3px;
+}
+.content .playground .rule .line-dangle {
+  position: absolute;
+  width: 45px;
+  left: -100%;
+  opacity: 0;
+}
+.content .playground .rule .line-dangle.d0, .content .playground .rule .line-dangle.c0 {
+  top: 177px;
+  animation: line-fade-out-1 var(--out-duration) ease-in-out forwards;
+}
+.content .playground .rule .line-dangle.d0.active, .content .playground .rule .line-dangle.c0.active {
+  animation: line-appear-in-1 var(--in-duration) ease-in-out forwards;
+}
+.content .playground .rule .line-dangle.g1, .content .playground .rule .line-dangle.a2 {
+  top: 18px;
+  animation: line-fade-out-2 var(--out-duration) ease-in-out forwards;
+}
+.content .playground .rule .line-dangle.g1.active, .content .playground .rule .line-dangle.a2.active {
+  animation: line-appear-in-2 var(--in-duration) ease-in-out forwards;
+}
+
+/*# sourceMappingURL=main.css.map */

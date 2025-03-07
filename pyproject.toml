@@ -1,0 +1,17 @@
+[tool.poetry]
+package-mode = false
+
+[tool.isort]
+profile = "black"
+
+[tool.vulture]
+exclude = [ "common/", ".venv/", "test-run/", "tests/",]
+paths = [ ".",]
+
+[tool.ruff]
+exclude = [ ".git", "__pycache__", ".venv",]
+line-length = 88
+
+[tool.ruff.lint]
+ignore = [ "E501", "E712",]
+unfixable = [ "E712",]
