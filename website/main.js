@@ -17,6 +17,11 @@ function playNote(note) {
 }
 
 function newNote(note_) {
+//    If note note in notes, add penalty
+    if (!notes.includes(note_)) {
+        state.total_duration += 5000;
+        return;
+    }
     if (state.current_note && state.current_time) {
         time_diff = (new Date()).getTime() - state.current_time;
         state.total_duration += time_diff;
@@ -101,6 +106,13 @@ function changeFadeOut() {
     console.log($(":root").css("--out-duration"))
 }
 
+function changeScale() {
+    input_dom = $("#scale-slider")
+    value = input_dom.val()
+    $(":root").css("--scale", value)
+    console.log($(":root").css("--scale"))
+}
+
 var state = {
     current_note: null,
     current_time: null,
@@ -111,16 +123,18 @@ var state = {
 
 function connect() {
     state = {
-        current_note: null,
+        current_note: state.current_note,
         current_time: null,
         total_duration: 0,
         previous_notes: [],
-        session: null,
+        session: state.session,
     }
     $("#labels").empty();
-    state.session = new WebSocket("ws://localhost:8080/");
-    state.session.addEventListener("message", function(event){
-        newNote(event.data);
-    });
-
+    updateUI();
+    if (state.session === null) {
+        state.session = new WebSocket("ws://localhost:8080/");
+        state.session.addEventListener("message", function(event){
+            newNote(event.data);
+        });
+    }
 }

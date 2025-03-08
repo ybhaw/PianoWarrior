@@ -43,6 +43,8 @@ class MidoRunner:
                 asyncio.run(self.send(self._random_note))
 
         self._client = client
+        if self._in_port:
+            self._in_port.close()
 
         self._in_port = mido.open_input(
             mido.get_input_names()[0], callback=_send_socket
@@ -72,6 +74,7 @@ class MidoRunner:
         self._out_port.send(mido.Message("note_on", note=96))
         sleep(0.2)
         self._out_port.send(mido.Message("note_on", note=96, velocity=0))
+        asyncio.run(self.send("wrong"))
 
 
 mido_runner: MidoRunner = MidoRunner()

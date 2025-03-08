@@ -1,5 +1,21 @@
+[project]
+name = "PianoWarrior"
+version = "0.1.0"
+description = "A fun digital piano/midi game to learn sheet music"
+requires-python = ">=3.9"
+
 [tool.poetry]
 package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+ruff = "^0.9.10"
+isort = "^6.0.1"
+
+[tool.poetry.dependencies]
+mido = "*"
+websockets = "^15.0.1"
+python-rtmidi = "^1.5.8"
 
 [tool.isort]
 profile = "black"
