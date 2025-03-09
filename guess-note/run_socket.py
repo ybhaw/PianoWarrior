@@ -31,8 +31,14 @@ class MidoRunner:
     def __init__(self):
         self._random_note: str = self._get_random_note()
         self._in_port = None
-        self._out_port = mido.open_output(mido.get_output_names()[0])
+        self._out_port = None
         self._client = None
+
+    def wait_for_connection(self):
+        while mido.get_input_names() == [] or mido.get_output_names() == []:
+            print("Waiting for connecting MIDI devices...")
+            sleep(1)
+        self._out_port = mido.open_output(mido.get_output_names()[0])
 
     def _get_random_note(self) -> str:
         return random.choice(list(note_mapping.keys()))
@@ -77,7 +83,13 @@ class MidoRunner:
         asyncio.run(self.send("wrong"))
 
 
-mido_runner: MidoRunner = MidoRunner()
+def get_mido_runner():
+    runner = MidoRunner()
+    runner.wait_for_connection()
+    return runner
+
+
+mido_runner: MidoRunner = get_mido_runner()
 
 
 async def handle_client(websocket):
